@@ -11,5 +11,9 @@ fn index() -> status::Custom<content::RawJson<&'static str>> {
 #[launch]
 fn rocket() -> _ {
     env::set_var("ROCKET_ADDRESS", "0.0.0.0");
+    if let Ok(port) = env::var("PORT") {
+        env::set_var("ROCKET_PORT", port);
+    }
+    
     rocket::build().mount("/", routes![index])
 }
