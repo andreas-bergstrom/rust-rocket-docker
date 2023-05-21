@@ -1,6 +1,7 @@
 #[macro_use] extern crate rocket;
 use rocket::http::Status;
 use rocket::response::{content, status};
+use std::env;
 
 #[get("/")]
 fn index() -> status::Custom<content::RawJson<&'static str>> {
